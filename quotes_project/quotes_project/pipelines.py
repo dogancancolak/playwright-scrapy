@@ -2,7 +2,7 @@ import psycopg2
 import json
 
 
-class StreamingJsonArrayPipeline:
+class JsonArrayPipeline:
     def open_spider(self, spider):
         self.file = open("quotes_stream.json", "w", encoding="utf-8")
         self.file.write("[\n")

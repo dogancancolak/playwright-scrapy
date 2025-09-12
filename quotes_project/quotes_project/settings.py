@@ -58,10 +58,6 @@ DOWNLOAD_DELAY = 1
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   "quotes_project.pipelines.JsonWriterPipeline": 100,
-   "quotes_project.pipelines.PostgresPipeline": 300,
-}
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -87,11 +83,3 @@ ITEM_PIPELINES = {
 
 # Set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"
-FEEDS = {
-    'output.json': {
-        'format': 'json',
-        'encoding': 'utf8',
-        'store_empty': False,
-        'indent': 4,
-    },
-}

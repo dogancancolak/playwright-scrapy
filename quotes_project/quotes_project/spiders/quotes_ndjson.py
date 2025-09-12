@@ -2,12 +2,12 @@ import scrapy
 from quotes_project.items import QuoteItem
 
 class QuotesJsonSpider(scrapy.Spider):
-    name = "quotes_json"
+    name = "quotes_ndjson"
     start_urls = ["http://quotes.toscrape.com"]
 
     custom_settings = {
         "ITEM_PIPELINES": {
-            "quotes_project.pipelines.StreamingJsonArrayPipeline": 100,
+            "quotes_project.pipelines.NdjsonPipeline": 100,
         }
     }
 

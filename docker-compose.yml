@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: quotes_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: quotes_rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  redis:
+    image: redis:7
+    container_name: quotes_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  scrapy:
+    build: .
+    container_name: quotes_scrapy
+    depends_on:
+      - postgres
+      - rabbitmq
+      - redis
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+
+volumes:
+  pgdata:

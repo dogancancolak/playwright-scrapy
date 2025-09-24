@@ -27,13 +27,9 @@ Different spiders demonstrate different output methods or different work flows:
 ## ⚙️ Key Implementation Details & Highlights
 
 - **Playwright integration:** Uses `scrapy-playwright` or equivalent download handler to let Scrapy handle JavaScript-rendered pages without breaking its pipeline logic.  
-- **`playwright_include_page` / `playwright_page_methods`:** Allows spiders to access the actual browser `Page` object, apply waits, scrolls, clicks, etc.  
-- **Pagination / Link following:** Spiders detect “next page” links and queue further requests (with `meta={'playwright': True}`) to continue crawling.  
-- **Infinite scroll / Load More handling:** Some spiders scroll down programmatically or click “Load More” buttons until new content stops loading.  
+- **Pagination / Link following:** Spiders detect “next page” links and queue further requests (with `meta={'playwright': True}`) to continue crawling.    
 - **Database persistence:** Pipeline writes crawled items into PostgreSQL, possibly with deduplication or upsert logic.  
 - **Dockerization & orchestration:** All components (crawler, DB, cache) are containerized for easy deployment and reproducibility.
-
----
 
 ---
 
@@ -77,6 +73,8 @@ DB_PASS=postgres
 ```
 
 ⚠️ Make sure `.env` is added to `.gitignore` so it’s not committed to your repository.
+
+---
 
 ### Run Spiders
 - JSON array output:

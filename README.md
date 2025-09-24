@@ -73,7 +73,7 @@ pip install -r requirements.txt
 
 ## 📂 Project Structure
 ```
-quotes_project/
+playwright-scrapy/ #Repository
 │   scrapy.cfg
 │   README.md
 │   .gitignore

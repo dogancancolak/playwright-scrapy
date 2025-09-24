@@ -94,3 +94,12 @@ REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
 
 SCHEDULER_PERSIST = True  # False yaparsan bitince temizlenir
 DUPEFILTER_DEBUG = True
+
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+}
+
+PLAYWRIGHT_BROWSER_TYPE = "chromium"
+PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT = 30000  # 30 saniye
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
